@@ -36,24 +36,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             # Add memory
             vb.customize ["modifyvm", :id, "--memory", "1024"]
 
-            # create shared disk
-            vb.customize ["createhd", "--filename", '.vagrant/shared.vdi', "--size", "2048", '--variant', 'fixed']
-            vb.customize ["modifyhd", '.vagrant/shared.vdi', "--type", "shareable"]
-
-            # connect the disk to SATA port 4
-            vb.customize ["storageattach", :id, '--storagectl', 'SATA Controller',
-                    '--port', 4, '--device', 0, '--type', 'hdd',
-                    '--medium', '.vagrant/shared.vdi']
-
-            # Set serial and model number to the disk
-            vb.customize ["setextradata", :id,
-                "VBoxInternal/Devices/ahci/0/Config/Port4/SerialNumber",
-                "shared"]
-            vb.customize ["setextradata", :id,
-                "VBoxInternal/Devices/ahci/0/Config/Port4/ModelNumber",
-                "VIRTUAL"]
-          end
-
           config.vm.provision "puppet" do |puppet|
             puppet.manifests_path = "manifests"
             puppet.manifest_file  = "site.pp"
