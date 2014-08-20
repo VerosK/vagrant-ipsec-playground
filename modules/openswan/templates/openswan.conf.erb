@@ -1,0 +1,11 @@
+version 2.0
+
+config setup
+  plutoopts="--perpeerlog"
+  plutodebug="control lifecycle"
+  protostack=netkey
+  nat_traversal=yes
+  virtual_private=
+  oe=off
+
+include /etc/ipsec.d/*.conf

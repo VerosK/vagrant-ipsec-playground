@@ -1,0 +1,27 @@
+conn <%= name %>
+  left = <%= left %><% if @leftid %>
+  leftid = <%= leftid%><% end %><% if @leftsubnet  %>
+  leftsubnet = <%= leftsubnet  %><% end %><% if @leftsubnets %>
+  leftsubnets = {<%= leftsubnets.join(",")  %>}<%end%><% if @leftsourceip %>
+  leftsourceip = <%= leftsourceip%><% end %>
+  right = <%= right %><% if @rightid %>
+  rightid = <%= rightid%><% end %><% if @rightsubnet  %>
+  rightsubnet = <%= rightsubnet  %><% end %><% if @rightsubnets %>
+  rightsubnets = {<%= rightsubnets.join(",")  %>}<%end%><% if @rightsourceip %>
+  rightsourceip = <%= rightsourceip%><% end %>
+  phase2alg = <%= esp %>
+  ike = <%= ike %>
+  auto = up
+  authby = secret
+  type = tunnel
+  salifetime = <%= salifetime %>
+  ikelifetime = <%= ikelifetime %>
+<% if @dpd %>
+<%- if @dpddelay -%>
+  dpddelay = <%= dpddelay %>
+<%- end -%>
+<%- if @dpdtimeout -%>
+  dpdtimeout = <%= dpdtimeout %>
+<%- end -%>
+  dpdaction = <%= dpdaction %>
+<% end %>

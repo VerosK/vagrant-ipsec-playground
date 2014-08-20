@@ -1,0 +1,9 @@
+--
+:backends:
+  - yaml
+:yaml:
+  :datadir: 'hiera'
+:hierarchy:
+  - "%{::hostname}"
+  - nodes
+  - common
