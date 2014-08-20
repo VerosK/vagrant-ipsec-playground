@@ -35,6 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
             # Add memory
             vb.customize ["modifyvm", :id, "--memory", "1024"]
+          end
 
           config.vm.provision "puppet" do |puppet|
             puppet.manifests_path = "manifests"
